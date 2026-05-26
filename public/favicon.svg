@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- Background -->
+  <rect width="512" height="512" rx="120" fill="#111110" />
+  
+  <!-- Outer glowing border -->
+  <rect width="512" height="512" rx="120" fill="none" stroke="#8fbc8b" stroke-width="12" stroke-opacity="0.3" />
+
+  <!-- D - stylized -->
+  <path d="M160 140 H 260 C 350 140 400 200 400 256 C 400 312 350 372 260 372 H 160 V 140 Z" 
+        fill="none" 
+        stroke="#8fbc8b" 
+        stroke-width="50" 
+        stroke-linecap="round" 
+        stroke-linejoin="round" />
+        
+  <!-- Inner accent dot -->
+  <circle cx="240" cy="256" r="30" fill="#c8cec6" />
+</svg>

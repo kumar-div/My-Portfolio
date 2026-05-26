@@ -1,0 +1,70 @@
+.cursor-outer,
+.cursor-inner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: var(--z-cursor);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  will-change: transform;
+}
+
+.cursor-outer.visible,
+.cursor-inner.visible {
+  opacity: 1;
+}
+
+.cursor-outer {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--text-muted);
+  border-radius: 50%;
+  transition: width 0.3s var(--ease-spring),
+              height 0.3s var(--ease-spring),
+              border-color 0.3s ease,
+              background 0.3s ease,
+              opacity 0.3s ease;
+}
+
+.cursor-inner {
+  width: 6px;
+  height: 6px;
+  background: var(--text-primary);
+  border-radius: 50%;
+  transition: width 0.2s var(--ease-spring),
+              height 0.2s var(--ease-spring),
+              background 0.2s ease,
+              opacity 0.3s ease;
+}
+
+.cursor-outer.hovering {
+  width: 56px;
+  height: 56px;
+  border-color: var(--highlight);
+  background: rgba(255, 107, 53, 0.04);
+}
+
+.cursor-inner.hovering {
+  width: 4px;
+  height: 4px;
+  background: var(--highlight);
+}
+
+.cursor-outer.clicking {
+  width: 30px;
+  height: 30px;
+  border-color: var(--text-primary);
+}
+
+.cursor-inner.clicking {
+  width: 10px;
+  height: 10px;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .cursor-outer,
+  .cursor-inner {
+    display: none !important;
+  }
+}

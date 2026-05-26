@@ -1,0 +1,206 @@
+.experience-section {
+  display: flex;
+  align-items: center;
+}
+
+.experience-heading {
+  font-size: var(--fs-h1);
+  margin-top: var(--space-md);
+  margin-bottom: var(--space-4xl);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease 0.15s, transform 0.6s var(--ease-out-expo) 0.15s;
+}
+
+.experience-section.visible .experience-heading,
+.experience-section.visible .section-label {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--border-glass);
+  transform: translateX(-50%);
+}
+
+.timeline-line-fill {
+  width: 100%;
+  height: 0%;
+  background: var(--text-muted);
+  transition: height 1.5s var(--ease-out-expo) 0.5s;
+}
+
+.experience-section.visible .timeline-line-fill {
+  height: 100%;
+}
+
+.timeline-entry {
+  position: relative;
+  width: 50%;
+  padding: 0 var(--space-2xl);
+  margin-bottom: var(--space-3xl);
+  opacity: 0;
+  transition: opacity 0.6s ease, transform 0.6s var(--ease-out-expo);
+}
+
+.timeline-entry.left {
+  left: 0;
+  text-align: right;
+  transform: translateX(-30px);
+}
+
+.timeline-entry.right {
+  left: 50%;
+  text-align: left;
+  transform: translateX(30px);
+}
+
+.experience-section.visible .timeline-entry {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.timeline-dot {
+  position: absolute;
+  top: 20px;
+  width: 10px;
+  height: 10px;
+  z-index: 2;
+}
+
+.timeline-entry.left .timeline-dot { right: -5px; }
+.timeline-entry.right .timeline-dot { left: -5px; }
+
+.timeline-dot-inner {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--highlight);
+  border: 2px solid var(--bg-void);
+}
+
+.timeline-dot-pulse {
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 1px solid var(--highlight);
+  opacity: 0;
+  animation: timeline-pulse 2.5s ease-in-out infinite;
+}
+
+@keyframes timeline-pulse {
+  0% { transform: scale(1); opacity: 0.4; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+.timeline-card {
+  padding: var(--space-lg);
+  background: transparent;
+  border: none;
+  backdrop-filter: none;
+}
+
+.timeline-year {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--highlight);
+  letter-spacing: var(--ls-wide);
+}
+
+.timeline-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-semibold);
+  margin: var(--space-xs) 0;
+  color: var(--text-primary);
+}
+
+.timeline-company {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  letter-spacing: var(--ls-wide);
+}
+
+.timeline-description {
+  font-size: var(--fs-small);
+  color: var(--text-secondary);
+  margin: var(--space-md) 0;
+  line-height: var(--lh-normal);
+}
+
+.timeline-achievements {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.timeline-achievements li {
+  font-size: var(--fs-small);
+  color: var(--text-secondary);
+  position: relative;
+  padding-left: var(--space-lg);
+}
+
+.timeline-entry.left .timeline-achievements li {
+  padding-left: 0;
+  padding-right: var(--space-lg);
+}
+
+.timeline-achievements li::before {
+  content: '—';
+  color: var(--text-muted);
+  position: absolute;
+  left: 0;
+}
+
+.timeline-entry.left .timeline-achievements li::before {
+  left: auto;
+  right: 0;
+}
+
+@media (max-width: 768px) {
+  .timeline-line { left: 16px; }
+
+  .timeline-entry,
+  .timeline-entry.left,
+  .timeline-entry.right {
+    width: 100%;
+    left: 0;
+    text-align: left;
+    padding-left: 40px;
+    padding-right: 0;
+    transform: translateY(20px);
+  }
+
+  .timeline-entry.left .timeline-dot,
+  .timeline-entry.right .timeline-dot {
+    left: 11px;
+    right: auto;
+  }
+
+  .timeline-entry.left .timeline-achievements li {
+    padding-left: var(--space-lg);
+    padding-right: 0;
+  }
+
+  .timeline-entry.left .timeline-achievements li::before {
+    left: 0;
+    right: auto;
+  }
+
+  .experience-heading {
+    font-size: var(--fs-h2);
+  }
+}
