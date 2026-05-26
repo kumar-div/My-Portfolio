@@ -95,6 +95,7 @@ export function Constellation({
     <>
       <points ref={pointsRef}>
         <bufferGeometry>
+          {/* @ts-ignore */}
           <bufferAttribute
             attach="attributes-position"
             count={count}
@@ -114,6 +115,7 @@ export function Constellation({
       </points>
       <lineSegments ref={linesRef}>
         <bufferGeometry>
+          {/* @ts-ignore */}
           <bufferAttribute
             attach="attributes-position"
             count={0}

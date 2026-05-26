@@ -68,12 +68,14 @@ export function ParticleField({
   return (
     <points ref={meshRef}>
       <bufferGeometry>
+        {/* @ts-ignore */}
         <bufferAttribute
           attach="attributes-position"
           count={count}
           array={positions}
           itemSize={3}
         />
+        {/* @ts-ignore */}
         <bufferAttribute
           attach="attributes-size"
           count={count}
