@@ -5,7 +5,7 @@ A hand-crafted developer portfolio built from scratch with React, TypeScript, an
 ---
 
 ## 🚀 Live Demo
-👉 _Coming soon_
+👉 [https://portfolio-of-divyansh.vercel.app/](https://portfolio-of-divyansh.vercel.app/)
 
 ---
 
@@ -63,7 +63,7 @@ A hand-crafted developer portfolio built from scratch with React, TypeScript, an
 
 ### Installation
 ```bash
-git clone https://github.com/kumar-div/portfolio.git
+git clone https://github.com/kumar-div/my-portfolio.git
 cd portfolio
 npm install
 ```

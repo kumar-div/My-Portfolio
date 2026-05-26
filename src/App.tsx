@@ -42,8 +42,8 @@ const PROJECTS = [
     name: 'This Portfolio',
     desc: 'Hand-crafted developer portfolio with glassmorphic design, typewriter effects, CSS film grain, responsive layouts across all devices, and interactive micro-animations — zero templates used.',
     tech: ['React', 'TypeScript', 'Vite', 'CSS'],
-    github: 'https://github.com/kumar-div/Portfolio',
-    live: '',
+    github: 'https://github.com/kumar-div/my-portfolio',
+    live: 'https://portfolio-of-divyansh.vercel.app/',
   },
 ];
 
