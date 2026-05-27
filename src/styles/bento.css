@@ -36,6 +36,8 @@ html {
   scroll-behavior: smooth;
   scrollbar-width: thin;
   scrollbar-color: #333 transparent;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 body {
@@ -309,8 +311,8 @@ button { font-family: inherit; border: none; background: none; color: inherit; c
 
 .hero-content {
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: flex-end;
   position: relative;
   z-index: 1;
   width: 100%;
@@ -322,34 +324,8 @@ button { font-family: inherit; border: none; background: none; color: inherit; c
   flex-direction: column;
   justify-content: flex-end;
   flex: 1;
-  max-width: 60%;
+  max-width: 100%;
   z-index: 2;
-}
-
-.hero-right {
-  position: absolute;
-  right: -5%;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 50%;
-  height: 80%;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.hero-3d {
-  width: 100%;
-  height: 100%;
-  opacity: 0.7;
-  transition: opacity 0.5s ease;
-}
-
-.hero-3d:hover {
-  opacity: 1;
-}
-
-.hero-3d canvas {
-  pointer-events: auto;
 }
 
 .hero-label {
@@ -1344,12 +1320,6 @@ button { font-family: inherit; border: none; background: none; color: inherit; c
     font-size: clamp(2.8rem, 12vw, 5rem);
   }
   .hero-scroll {
-    display: none;
-  }
-  .hero-actions {
-    flex-wrap: wrap;
-  }
-  .hero-right {
     display: none;
   }
   .hero-left {

@@ -1,7 +1,5 @@
-import { useState, useEffect, useRef, lazy, Suspense } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { quotes } from './data/quotes';
-
-const HeroScene = lazy(() => import('./components/HeroScene'));
 
 /* ═══ DATA ═══ */
 
@@ -352,12 +350,6 @@ export default function App() {
                 <span>Scroll</span>
               </div>
             </div>
-          </div>
-
-          <div className="hero-right">
-            <Suspense fallback={null}>
-              <HeroScene />
-            </Suspense>
           </div>
         </div>
       </section>
