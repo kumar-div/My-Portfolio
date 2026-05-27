@@ -394,29 +394,29 @@ function ProjectsSection() {
           <h2 className="section-title">Selected Work</h2>
           <span className="section-num">04</span>
         </div>
-        <div className="projects-wrapper">
-          <div className={`projects-track reveal-stagger ${visible ? 'visible' : ''}`}>
+        <div className="projects-grid-wrapper">
+          <div className={`projects-grid reveal-stagger ${visible ? 'visible' : ''}`}>
             {PROJECTS.map((p) => (
               <div
                 key={p.num}
-                className="project-slide"
+                className="project-card"
               >
-                <div className="project-slide-top">
-                  <span className="project-slide-num">{p.num}</span>
-                  <div className="project-slide-links">
+                <div className="project-card-top">
+                  <span className="project-card-num">{p.num}</span>
+                  <div className="project-card-links">
                     {p.live && (
-                      <a href={p.live} target="_blank" rel="noopener noreferrer" className="project-slide-link">
+                      <a href={p.live} target="_blank" rel="noopener noreferrer" className="project-card-link">
                         Live ↗
                       </a>
                     )}
-                    <a href={p.github} target="_blank" rel="noopener noreferrer" className="project-slide-link">
+                    <a href={p.github} target="_blank" rel="noopener noreferrer" className="project-card-link">
                       Code ↗
                     </a>
                   </div>
                 </div>
-                <h3 className="project-slide-name">{p.name}</h3>
-                <Typewriter as="p" className="project-slide-desc" text={p.desc} speed={10} delay={300} />
-                <div className="project-slide-tech">
+                <h3 className="project-card-name">{p.name}</h3>
+                <Typewriter as="p" className="project-card-desc" text={p.desc} speed={10} delay={300} />
+                <div className="project-card-tech">
                   {p.tech.map((t) => (
                     <span key={t}>{t}</span>
                   ))}

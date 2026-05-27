@@ -542,44 +542,43 @@ button { font-family: inherit; border: none; background: none; color: inherit; c
 }
 
 /* ════════════════════════
-   PROJECTS — Horizontal scroll
+   PROJECTS — Grid Layout
    ════════════════════════ */
-.projects-wrapper {
-  overflow-x: auto;
-  overflow-y: hidden;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
+.projects-grid-wrapper {
+  width: 100%;
 }
 
-.projects-wrapper::-webkit-scrollbar { display: none; }
-
-.projects-track {
-  display: flex;
-  gap: 20px;
-  padding-right: var(--gutter);
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
   padding-top: 20px;
-  padding-bottom: 50px; /* Room for hover shadow and transform */
-  margin-top: -20px;
-  margin-bottom: -50px;
+  padding-bottom: 20px;
 }
 
-.project-slide {
-  flex: 0 0 clamp(320px, 40vw, 480px);
+@media (max-width: 900px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.project-card {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  padding: 28px;
+  gap: 20px;
+  padding: 36px;
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: 16px;
   transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
   text-decoration: none;
   position: relative;
   overflow: hidden;
+  height: 100%;
 }
 
 /* Subtle accent glow on hover */
-.project-slide::after {
+.project-card::after {
   content: '';
   position: absolute;
   top: 0;
@@ -591,41 +590,41 @@ button { font-family: inherit; border: none; background: none; color: inherit; c
   transition: opacity 0.5s ease;
 }
 
-.project-slide:hover::after {
+.project-card:hover::after {
   opacity: 1;
 }
 
-.project-slide:hover {
+.project-card:hover {
   border-color: var(--accent);
-  transform: translateY(-10px) scale(1.02);
-  box-shadow: 0 20px 50px rgba(143, 188, 139, 0.12), 0 0 0 1px rgba(143, 188, 139, 0.08);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(143, 188, 139, 0.1), 0 0 0 1px rgba(143, 188, 139, 0.05);
   background: var(--bg-alt);
 }
 
-.project-slide-top {
+.project-card-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.project-slide-links {
+.project-card-links {
   display: flex;
-  gap: 12px;
+  gap: 16px;
   align-items: center;
 }
 
-.project-slide-num {
+.project-card-num {
   font-family: var(--mono);
-  font-size: 0.55rem;
+  font-size: 0.65rem;
   color: var(--text-dim);
   transition: color 0.3s ease;
 }
 
-.project-slide:hover .project-slide-num {
+.project-card:hover .project-card-num {
   color: var(--accent);
 }
 
-.project-slide-link {
+.project-card-link {
   font-size: 0.75rem;
   color: var(--text-dim);
   font-family: var(--mono);
@@ -639,64 +638,67 @@ button { font-family: inherit; border: none; background: none; color: inherit; c
   gap: 4px;
 }
 
-.project-slide-link svg {
-  width: 12px;
-  height: 12px;
+.project-card-link svg {
+  width: 14px;
+  height: 14px;
 }
 
-.project-slide:hover .project-slide-link {
+.project-card:hover .project-card-link {
   opacity: 1;
   transform: translateY(0);
 }
 
-.project-slide-link:hover {
+.project-card-link:hover {
   color: var(--accent);
 }
 
-.project-slide-name {
+.project-card-name {
   font-family: var(--serif);
-  font-size: 1.4rem;
+  font-size: 1.7rem;
   color: var(--text-bright);
   transition: color 0.3s ease, letter-spacing 0.4s ease;
 }
 
-.project-slide:hover .project-slide-name {
+.project-card:hover .project-card-name {
   color: var(--accent);
   letter-spacing: 0.01em;
 }
 
-.project-slide-desc {
-  font-size: 0.82rem;
+.project-card-desc {
+  font-size: 0.9rem;
   color: var(--text-dim);
   line-height: 1.6;
   flex: 1;
   transition: color 0.4s ease;
 }
 
-.project-slide:hover .project-slide-desc {
+.project-card:hover .project-card-desc {
   color: var(--text);
 }
 
-.project-slide-tech {
+.project-card-tech {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 8px;
+  margin-top: 12px;
 }
 
-.project-slide-tech span {
+.project-card-tech span {
   font-family: var(--mono);
-  font-size: 0.55rem;
+  font-size: 0.6rem;
   color: var(--accent);
   opacity: 0.7;
   transition: opacity 0.3s ease, background 0.3s ease;
-  padding: 2px 8px;
+  padding: 4px 12px;
   border-radius: 100px;
   background: transparent;
+  border: 1px solid rgba(143, 188, 139, 0.2);
 }
 
-.project-slide:hover .project-slide-tech span {
+.project-card:hover .project-card-tech span {
   opacity: 1;
   background: var(--accent-dim);
+  border-color: transparent;
 }
 
 /* ════════════════════════
@@ -966,13 +968,32 @@ button { font-family: inherit; border: none; background: none; color: inherit; c
   border: 1px solid var(--border);
   border-radius: 8px;
   background: var(--bg-alt);
-  transition: all 0.4s ease;
+  transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle accent glow on hover */
+.cap-item::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.cap-item:hover::after {
+  opacity: 1;
 }
 
 .cap-item:hover {
   border-color: var(--accent);
-  transform: translateY(-10px) scale(1.02);
-  box-shadow: 0 15px 40px rgba(143, 188, 139, 0.1);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(143, 188, 139, 0.1), 0 0 0 1px rgba(143, 188, 139, 0.05);
   background: var(--bg-card);
 }
 
