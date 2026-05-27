@@ -402,7 +402,7 @@ function AboutSection() {
           <Typewriter
             as="p"
             className="about-text"
-            text="I engineer digital experiences that bridge the gap between heavy computational logic and flawless user interfaces. As a Computer Science student, I bypass standard tutorials to architect actual production systems—spanning fintech-integrated platforms, local-first LLM tooling, and highly optimized game AI. I am deeply obsessed with clean architecture, strict type safety, and sub-second performance. For me, engineering isn't just about making things work; it's about writing scalable, maintainable code that solves real problems and building interfaces that command attention."
+            text="I engineer digital experiences that bridge the gap between heavy computational logic and flawless user interfaces. As a Computer Science student, I bypass standard tutorials to architect actual production systems—spanning fintech-integrated food ordering platforms, local-first LLM tooling, and highly optimized game AI. I am deeply obsessed with clean architecture, strict type safety, and sub-second performance. For me, engineering isn't just about making things work; it's about writing scalable, maintainable code that solves real problems and building interfaces that command attention."
           />
           <div className="about-details">
             <div className="about-detail">
