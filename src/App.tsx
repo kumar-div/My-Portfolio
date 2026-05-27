@@ -1,5 +1,7 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, lazy, Suspense } from 'react';
 import { quotes } from './data/quotes';
+
+const HeroScene = lazy(() => import('./components/HeroScene'));
 
 /* ═══ DATA ═══ */
 
@@ -319,34 +321,43 @@ export default function App() {
 
       {/* Hero */}
       <section className="hero" id="home">
-
-        <div className="hero-label">
-          <span className="hero-dot" />
-          Available for opportunities
-        </div>
-
-        <h1 className="hero-title">
-          I build things<br />
-          for the <LoopingTypewriter as="em" words={['web', 'future', 'people', 'world', 'startups', 'creatives', 'impact']} />
-        </h1>
-
-        <div className="hero-actions">
-          <a href="#work" className="btn-primary">View Work</a>
-          <a href={ME.resume} target="_blank" rel="noopener noreferrer" className="btn-secondary">Download CV</a>
-        </div>
-
-        <div className="hero-bottom">
-          <Typewriter
-            as="p"
-            className="hero-intro"
-            text="Full-stack developer and CS student at AKTU. I ship production apps with real users, real payments, and real impact — not tutorial clones."
-            delay={500}
-          />
-          <div className="hero-scroll">
-            <div className="scroll-bar">
-              <div className="scroll-bar-fill" />
+        <div className="hero-content">
+          <div className="hero-left">
+            <div className="hero-label">
+              <span className="hero-dot" />
+              Available for opportunities
             </div>
-            <span>Scroll</span>
+
+            <h1 className="hero-title">
+              I build things<br />
+              for the <LoopingTypewriter as="em" words={['web', 'future', 'people', 'world', 'startups', 'creatives', 'impact']} />
+            </h1>
+
+            <div className="hero-actions">
+              <a href="#work" className="btn-primary">View Work</a>
+              <a href={ME.resume} target="_blank" rel="noopener noreferrer" className="btn-secondary">Download CV</a>
+            </div>
+
+            <div className="hero-bottom">
+              <Typewriter
+                as="p"
+                className="hero-intro"
+                text="Full-stack developer and CS student at AKTU. I ship production apps with real users, real payments, and real impact — not tutorial clones."
+                delay={500}
+              />
+              <div className="hero-scroll">
+                <div className="scroll-bar">
+                  <div className="scroll-bar-fill" />
+                </div>
+                <span>Scroll</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="hero-right">
+            <Suspense fallback={null}>
+              <HeroScene />
+            </Suspense>
           </div>
         </div>
       </section>
