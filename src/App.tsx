@@ -323,7 +323,7 @@ export default function App() {
           <div className="hero-left">
             <div className="hero-label">
               <span className="hero-dot" />
-              Available for opportunities
+              Available for opportunities.
             </div>
 
             <h1 className="hero-title">
@@ -340,7 +340,7 @@ export default function App() {
               <Typewriter
                 as="p"
                 className="hero-intro"
-                text="Full-stack developer and CS student at AKTU. I ship production apps with real users, real payments, and real impact — not tutorial clones."
+                text="Full-stack developer and CS student at AKTU. I ship production ready web apps with real users, real payments, and real impact — not tutorial clones."
                 delay={500}
               />
               <div className="hero-scroll">
@@ -402,7 +402,7 @@ function AboutSection() {
           <Typewriter
             as="p"
             className="about-text"
-            text="I'm Divyansh — a B.Tech Computer Science student who'd rather ship production apps than sit through lectures. I believe the best way to learn engineering is to build things people actually use. My work spans food ordering platforms with real payment integration, AI-powered tools that run entirely on local machines, and game AI that actually puts up a fight. I care about craft, performance, and writing code that doesn't make the next developer cry."
+            text="I engineer digital experiences that bridge the gap between heavy computational logic and flawless user interfaces. As a Computer Science student, I bypass standard tutorials to architect actual production systems—spanning fintech-integrated platforms, local-first LLM tooling, and highly optimized game AI. I am deeply obsessed with clean architecture, strict type safety, and sub-second performance. For me, engineering isn't just about making things work; it's about writing scalable, maintainable code that solves real problems and building interfaces that command attention."
           />
           <div className="about-details">
             <div className="about-detail">
