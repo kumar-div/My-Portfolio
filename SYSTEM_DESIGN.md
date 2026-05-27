@@ -15,9 +15,8 @@
 - [8. Rendering & Performance](#8-rendering--performance)
 - [9. Navigation System](#9-navigation-system)
 - [10. Responsive Design Strategy](#10-responsive-design-strategy)
-- [11. 3D Layer (Three.js)](#11-3d-layer-threejs)
-- [12. Accessibility](#12-accessibility)
-- [13. Build & Deployment](#13-build--deployment)
+- [11. Accessibility](#11-accessibility)
+- [12. Build & Deployment](#12-build--deployment)
 
 ---
 
@@ -84,31 +83,7 @@
     ├── <ContactSection>               ← WhatsApp CTA + socials
     └── <footer>                       ← Copyright line
 
-External Components (src/components/):
-├── sections/
-│   ├── Hero.tsx + Hero.css            ← Alternative hero (unused in main)
-│   ├── About.tsx + About.css
-│   ├── Projects.tsx + Projects.css    ← Standalone project grid
-│   ├── Skills.tsx + Skills.css
-│   ├── Experience.tsx + Experience.css
-│   ├── Contact.tsx + Contact.css
-│   └── TechShowcase.tsx + TechShowcase.css
-├── ui/
-│   ├── Navbar.tsx + Navbar.css
-│   ├── CustomCursor.tsx + CustomCursor.css
-│   ├── MagneticButton.tsx + MagneticButton.css
-│   ├── Preloader.tsx + Preloader.css
-│   ├── ScrollProgress.tsx + ScrollProgress.css
-│   └── SocialSidebar.tsx + SocialSidebar.css
-└── canvas/
-    ├── Scene.tsx                      ← R3F Canvas wrapper
-    ├── ParticleField.tsx              ← Animated particle system
-    ├── FloatingGeometry.tsx           ← Rotating 3D shapes
-    ├── Constellation.tsx              ← Interactive node network
-    └── TechSphere.tsx                 ← Rotating tech label sphere
-```
-
-> **Note:** The main `App.tsx` uses inline section components (defined at the bottom of the file) as the primary rendering path. The `src/components/sections/` directory contains standalone alternatives used for modular development and potential future refactoring.
+> **Note:** The entire UI is built as a highly-optimized single-file architecture (`App.tsx`), ensuring zero component mounting overhead, rapid iteration, and direct control over the layout's rendering cycle.
 
 ---
 
@@ -148,11 +123,6 @@ portfolio/                             ~95KB source (excluding node_modules)
 │   │   ├── useMobileDetect.ts         # Device type detection
 │   │   ├── useMousePosition.ts        # RAF-throttled mouse tracking
 │   │   └── useScrollProgress.ts       # Scroll percentage + direction
-│   │
-│   └── components/
-│       ├── canvas/                    # 5 files, ~12.6KB total
-│       ├── sections/                  # 14 files (7 TSX + 7 CSS), ~35KB
-│       └── ui/                        # 12 files (6 TSX + 6 CSS), ~14.7KB
 │
 ├── index.html                         # HTML shell with font preloads
 ├── tsconfig.json                      # TypeScript config (react-jsx)
@@ -273,11 +243,10 @@ The `bento.css` file defines its own parallel palette that takes priority:
 
 ```
 Layer 1 (z: 0)     — Vignette: radial-gradient darkening edges
-Layer 2 (z: 1)     — 3D Canvas (when active)
-Layer 3 (z: 10)    — All content sections
-Layer 4 (z: 100)   — Navbar (glassmorphism)
-Layer 5 (z: 9998)  — Film grain: SVG noise texture at 4% opacity
-Layer 6 (z: 9999)  — Preloader (removed after load)
+Layer 2 (z: 10)    — All content sections
+Layer 3 (z: 100)   — Navbar (glassmorphism)
+Layer 4 (z: 9998)  — Film grain: SVG noise texture at 4% opacity
+Layer 5 (z: 9999)  — Preloader (removed after load)
 ```
 
 ---
@@ -385,7 +354,6 @@ function Typewriter({ text, speed, delay, as: Component, className }) {
 ```
 Vite 8 (ESBuild + Rollup)
 ├── React 19 (react, react-dom)
-├── Three.js + R3F (tree-shaken, loaded for 3D canvas components)
 └── Zero CSS framework — all vanilla CSS
 ```
 
@@ -500,38 +468,13 @@ grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 ```
 
----
 
-## 11. 3D Layer (Three.js)
-
-The portfolio includes an optional 3D rendering layer built with React Three Fiber:
-
-### Components
-
-| Component | Description | Geometry |
-|-----------|-------------|----------|
-| `Scene.tsx` | Canvas wrapper with camera, lighting, controls | — |
-| `ParticleField.tsx` | Floating particles with subtle drift | `BufferGeometry` points |
-| `FloatingGeometry.tsx` | Rotating wireframe shapes | Icosahedron, Torus, Octahedron |
-| `Constellation.tsx` | Interactive node network | Lines + Spheres |
-| `TechSphere.tsx` | Rotating sphere of tech labels | `Billboard` + `Text` |
-
-### Integration
-
-```tsx
-// Scene wraps all 3D content in a fixed canvas
-<div className="canvas-container">  {/* position: fixed, z-index: 1 */}
-  <Canvas>
-    <Scene />
-  </Canvas>
-</div>
-```
-
-> **Current status:** 3D components exist in the codebase but the main `App.tsx` uses CSS-based grain/gradient backgrounds instead. The 3D layer is available for future use or as an opt-in feature.
 
 ---
 
-## 12. Accessibility
+---
+
+## 11. Accessibility
 
 | Feature | Implementation |
 |---------|---------------|
@@ -546,7 +489,7 @@ The portfolio includes an optional 3D rendering layer built with React Three Fib
 
 ---
 
-## 13. Build & Deployment
+## 12. Build & Deployment
 
 ### Build Pipeline
 

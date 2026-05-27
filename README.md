@@ -35,7 +35,6 @@ A hand-crafted developer portfolio built from scratch with React, TypeScript, an
 | Framework   | React 19                   |
 | Language    | TypeScript                 |
 | Bundler     | Vite 8                     |
-| 3D Engine   | Three.js + React Three Fiber |
 | Styling     | Vanilla CSS (Custom Design System) |
 | Animations  | CSS Transitions + Keyframes |
 | Deployment  | Vercel                     |
@@ -50,7 +49,7 @@ A hand-crafted developer portfolio built from scratch with React, TypeScript, an
 | 01 | About | Bio, location, education, and skill tags |
 | 02 | Capabilities | 4-pillar breakdown of technical strengths |
 | 03 | Credentials | Downloadable certificates from Walmart, Deloitte, GUVI |
-| 04 | Selected Work | Horizontal scrolling project cards with live/code links |
+| 04 | Selected Work | Responsive grid of project cards with live/code links |
 | 05 | Journey | Timeline of education and career milestones |
 | — | Philosophy | Animated engineering quote |
 | — | Contact | WhatsApp CTA, email copy, and social links |
@@ -87,10 +86,6 @@ portfolio/
 │   ├── icons.svg           # SVG icon sprite
 │   └── resume.pdf          # Downloadable resume
 ├── src/
-│   ├── components/
-│   │   ├── canvas/         # 3D scenes (Three.js / R3F)
-│   │   ├── sections/       # Page sections (Hero, About, Projects, etc.)
-│   │   └── ui/             # Reusable UI (Navbar, Cursor, Preloader, etc.)
 │   ├── data/               # Content data and quotes
 │   ├── hooks/              # Custom React hooks
 │   ├── styles/             # Design system and global CSS
