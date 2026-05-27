@@ -80,7 +80,7 @@ const SKILLS = [
   'REST APIs', 'CSS/SCSS', 'Linux', 'Vercel',
 ];
 
-/* 3D removed — CSS grain/gradients handle the background */
+
 
 /* ═══ REVEAL HOOK ═══ */
 
@@ -242,13 +242,9 @@ export default function App() {
   };
 
   const handleNameClick = () => {
-    console.log("Nav name clicked! scrollY:", window.scrollY, "innerHeight:", window.innerHeight);
-    // If we're past half the screen, consider us "off" the home page
     if (window.scrollY > window.innerHeight * 0.5) {
-      console.log("Scrolling up...");
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
-      console.log("Showing quote!");
       const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
       triggerToast(
         <span>
@@ -260,7 +256,7 @@ export default function App() {
     }
   };
 
-  // Preloader counter
+
   useEffect(() => {
     let frame: number;
     const start = Date.now();
