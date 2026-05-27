@@ -375,6 +375,8 @@ export default function App() {
       {/* Philosophy */}
       <PhilosophySection />
 
+      <DividerSection />
+
       {/* Contact */}
       <ContactSection />
 
@@ -663,5 +665,16 @@ function PhilosophySection() {
         />
       </div>
     </section>
+  );
+}
+
+function DividerSection() {
+  const { ref, visible } = useReveal();
+  return (
+    <div ref={ref} className={`divider-section reveal-blur ${visible ? 'visible' : ''}`}>
+      <div className="divider-line" />
+      <div className="divider-dot" />
+      <div className="divider-line" />
+    </div>
   );
 }
