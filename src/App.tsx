@@ -135,7 +135,43 @@ function Typewriter({ text, speed = 20, delay = 0, as: Component = 'span', class
   );
 }
 
-/* ═══ APP ═══ */
+/* ═══ LOOPING TYPEWRITER HOOK ═══ */
+function LoopingTypewriter({ words, typeSpeed = 120, deleteSpeed = 80, delay = 2500, as: Component = 'span', className = '' }: any) {
+  const [wordIndex, setWordIndex] = useState(0);
+  const [text, setText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const currentWord = words[wordIndex];
+    let timer: any;
+
+    if (isDeleting) {
+      timer = setTimeout(() => {
+        setText((prev) => prev.slice(0, -1));
+        if (text.length <= 1) {
+          setIsDeleting(false);
+          setWordIndex((prev) => (prev + 1) % words.length);
+        }
+      }, deleteSpeed);
+    } else {
+      timer = setTimeout(() => {
+        setText((prev) => currentWord.slice(0, prev.length + 1));
+        if (text.length === currentWord.length) {
+          timer = setTimeout(() => setIsDeleting(true), delay);
+        }
+      }, typeSpeed);
+    }
+
+    return () => clearTimeout(timer);
+  }, [text, isDeleting, wordIndex, words, typeSpeed, deleteSpeed, delay]);
+
+  return (
+    <Component className={className}>
+      {text}
+      <span style={{ display: 'inline-block', width: '0.12em', height: '0.85em', backgroundColor: 'var(--accent)', verticalAlign: 'baseline', marginLeft: '4px', animation: 'blink 0.75s step-end infinite' }}></span>
+    </Component>
+  );
+}
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -283,7 +319,7 @@ export default function App() {
 
         <h1 className="hero-title">
           I build things<br />
-          for the <em>web</em>
+          for the <LoopingTypewriter as="em" words={['web', 'future', 'people', 'world', 'startups', 'creatives', 'impact']} />
         </h1>
 
         <div className="hero-actions">
