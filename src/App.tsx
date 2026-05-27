@@ -136,12 +136,19 @@ function Typewriter({ text, speed = 20, delay = 0, as: Component = 'span', class
 }
 
 /* ═══ LOOPING TYPEWRITER HOOK ═══ */
-function LoopingTypewriter({ words, typeSpeed = 120, deleteSpeed = 80, delay = 2500, as: Component = 'span', className = '' }: any) {
+function LoopingTypewriter({ words, typeSpeed = 120, deleteSpeed = 80, delay = 2500, initialDelay = 2400, as: Component = 'span', className = '' }: any) {
   const [wordIndex, setWordIndex] = useState(0);
   const [text, setText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
+  const [hasStarted, setHasStarted] = useState(false);
 
   useEffect(() => {
+    const t = setTimeout(() => setHasStarted(true), initialDelay);
+    return () => clearTimeout(t);
+  }, [initialDelay]);
+
+  useEffect(() => {
+    if (!hasStarted) return;
     const currentWord = words[wordIndex];
     let timer: any;
 
@@ -163,7 +170,7 @@ function LoopingTypewriter({ words, typeSpeed = 120, deleteSpeed = 80, delay = 2
     }
 
     return () => clearTimeout(timer);
-  }, [text, isDeleting, wordIndex, words, typeSpeed, deleteSpeed, delay]);
+  }, [text, isDeleting, wordIndex, words, typeSpeed, deleteSpeed, delay, hasStarted]);
 
   return (
     <Component className={className}>
@@ -182,6 +189,11 @@ export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
